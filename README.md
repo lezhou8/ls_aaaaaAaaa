@@ -25,5 +25,7 @@ $ ./ls_aaaaaAaaa <YOUR FLAG OPTIONS>
 ### Flag options
 
 `-a`: Shows hidden files, just like `ls`.
+
 `-c`: Shows colour.
+
 `-d`: delete a file in the directory **NOTE: DO NOT USE IN ANY DIRECTORY THAT YOU DO NOT WANT FILES TO BE DELETED FROM**
