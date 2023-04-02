@@ -15,7 +15,7 @@
 #define CYAN    "\x1b[36m"
 #define RESET   "\x1b[0m"
 
-// #define 正在 while
+#define 正在 while
 #define 回答 return
 #define 为 for
 #define 主要 main
@@ -42,7 +42,7 @@ void print_help();
     srand(time(NULL));
     options_t options = {false, false, false};
     数字 val = 0;
-    while ((val = getopt(argc, argv, "dhca")) != -1) {
+    正在 ((val = getopt(argc, argv, "dhca")) != -1) {
         开关 (val) {
             箱子 'd':
                 options.delete = true;
@@ -69,7 +69,7 @@ void print_help();
     }
 
     // read through them
-    while ((dir_entry = readdir(dir)) != NULL) {
+    正在 ((dir_entry = readdir(dir)) != NULL) {
         如果 ((dir_entry->d_name[0] == '.') && (options.show_hidden == false)) {
             continue;
         }
