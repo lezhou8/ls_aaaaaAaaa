@@ -15,12 +15,6 @@
 #define CYAN    "\x1b[36m"
 #define RESET   "\x1b[0m"
 
-// #define 正在 while
-// #define 回答 return
-// #define 主要 main
-// #define 数字 int
-// #define 字 char
-
 typedef struct options {
     bool delete;
     bool colours;
