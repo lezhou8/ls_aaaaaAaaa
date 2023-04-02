@@ -16,115 +16,122 @@
 #define RESET   "\x1b[0m"
 
 // #define 正在 while
-// #define 回答 return
-// #define 主要 main
-// #define 数字 int
-// #define 字 char
+#define 回答 return
+#define 为 for
+#define 主要 main
+#define 数字 int
+#define 字 char
+#define 打印 printf
+#define 对不对 bool
+#define 开关 switch
+#define 打破 break
+#define 如果 if
+#define 箱子 case 
 
 typedef struct options {
-    bool delete;
-    bool colours;
-    bool show_hidden;
+    对不对 delete;
+    对不对 colours;
+    对不对 show_hidden;
 } options_t;
 
 void print_help();
 
-int main(int argc, char **argv)
+数字 主要(数字 argc, 字 **argv)
 {
     // handle flag arguments
     srand(time(NULL));
     options_t options = {false, false, false};
-    int val = 0;
+    数字 val = 0;
     while ((val = getopt(argc, argv, "dhca")) != -1) {
-        switch (val) {
-            case 'd':
+        开关 (val) {
+            箱子 'd':
                 options.delete = true;
-                break;
-            case 'c':
+                打破;
+            箱子 'c':
                 options.colours = true;
-                break;
-            case 'a':
+                打破;
+            箱子 'a':
                 options.show_hidden = true;
-                break;
-            case 'h':
+                打破;
+            箱子 'h':
                 print_help();
-                return 0;
+                回答 0;
         }
     }
 
     // get all files in working directory
-    bool havent_deleted = true;
+    对不对 havent_deleted = true;
     struct dirent *dir_entry;
     DIR *dir = opendir(".");
-    if (dir == NULL) {
+    如果 (dir == NULL) {
         perror("Did not work\n");
         exit(EXIT_FAILURE);
     }
 
     // read through them
     while ((dir_entry = readdir(dir)) != NULL) {
-        if ((dir_entry->d_name[0] == '.') && (options.show_hidden == false)) {
+        如果 ((dir_entry->d_name[0] == '.') && (options.show_hidden == false)) {
             continue;
         }
-        if (havent_deleted && (options.delete == true)) {
-            if (remove(dir_entry->d_name)) {
+        如果 (havent_deleted && (options.delete == true)) {
+            如果 (remove(dir_entry->d_name)) {
                 continue;
             }
             havent_deleted = false;
             continue;
         }
-        int before = rand() % 51;
-        int after = rand() % 51;
-        bool new_line = rand() % 2;
-        for (int i = 0; i < before; ++i) {
-            printf(" ");
+        数字 before = rand() % 51;
+        数字 after = rand() % 51;
+        对不对 new_line = rand() % 2;
+        for (数字 i = 0; i < before; ++i) {
+            打印(" ");
         }
-        if (options.colours == true) {
-            int rand_colour = rand() % 6;
-            switch (rand_colour) {
-                case 0:
-                    printf(RED "%s" RESET, dir_entry->d_name);
-                    break;
-                case 1:
-                    printf(GREEN "%s" RESET, dir_entry->d_name);
-                    break;
-                case 2:
-                    printf(YELLOW "%s" RESET, dir_entry->d_name);
-                    break;
-                case 3:
-                    printf(BLUE "%s" RESET, dir_entry->d_name);
-                    break;
-                case 4:
-                    printf(MAGENTA "%s" RESET, dir_entry->d_name);
-                    break;
-                case 5:
-                    printf(CYAN "%s" RESET, dir_entry->d_name);
-                    break;
+        如果 (options.colours == true) {
+            数字 rand_colour = rand() % 6;
+            开关 (rand_colour) {
+                箱子 0:
+                    打印(RED "%s" RESET, dir_entry->d_name);
+                    打破;
+                箱子 1:
+                    打印(GREEN "%s" RESET, dir_entry->d_name);
+                    打破;
+                箱子 2:
+                    打印(YELLOW "%s" RESET, dir_entry->d_name);
+                    打破;
+                箱子 3:
+                    打印(BLUE "%s" RESET, dir_entry->d_name);
+                    打破;
+                箱子 4:
+                    打印(MAGENTA "%s" RESET, dir_entry->d_name);
+                    打破;
+                箱子 5:
+                    打印(CYAN "%s" RESET, dir_entry->d_name);
+                    打破;
             }
         } else {
-            printf("%s", dir_entry->d_name);
+            打印("%s", dir_entry->d_name);
         }
-        for (int i = 0; i < after; ++i) {
-            printf(" ");
+        for (数字 i = 0; i < after; ++i) {
+            打印(" ");
         }
-        if (new_line)
-            printf("\n");
+        如果 (new_line)
+            打印("\n");
     }
 
-    printf("\n");
+    打印("\n");
     closedir(dir);
-    return 0;
+    回答 0;
 }
 
 void print_help()
 {
-    int rows = rand() % 21;
-    int columns = rand() % 21;
-    for (int i = 0; i < rows; ++i) {
-        int rand_capital = rand() % 21;
-        for (int j = 0; j < columns; ++j) {
-            j == rand_capital ? printf("A") : printf("a");
+    数字 rows = rand() % 21;
+    数字 columns = rand() % 21;
+    for (数字 i = 0; i < rows; ++i) {
+        数字 rand_capital = rand() % 21;
+        for (数字 j = 0; j < columns; ++j) {
+            j == rand_capital ? 打印("A") : 打印("a");
         }
-        printf("\n");
+        打印("\n");
     }
 }
